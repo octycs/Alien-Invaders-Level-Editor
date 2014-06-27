@@ -1,4 +1,4 @@
 Alien-Invaders-Level-Editor
 ===========================
 
-A Level Editor for Alien Inavders.
+This is the JavaScript Level Editor for [Alien Invaders](https://github.com/Rahix/Alien-Invaders).
