@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <title>Level Editor</title>
+    <style>
+    
+      * {
+	font-family: sans-serif;
+      }
+      
+      .options {
+	display: none;
+	visibility: hidden;
+      }
+      
+      .editorMain{
+	display: none;
+	visibility: hidden;
+      }
+      
+      .options:target {
+	display: block;
+	visibility: visible;
+	
+	background: #CCCCCC;
+	border: 1px solid #000011;
+	border-radius: 0.5em;
+	
+	margin-top: 10%;
+	margin-left: -5%;
+	
+	width: 30%;
+	min-width: 30em;
+	height: 25%;
+	min-height: 15em;
+      }
+      
+      .editorMain:target{
+	display: block;
+	visibility: visible;
+      }
+      
+      .optionsTable {
+	border: none;
+	
+	width: 100%;
+	
+	margin-bottom: 1em;
+      }
+      
+      .optionsInputText {
+	color: #444444;
+	background: #EEEEEE;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	
+	width: 100%;
+	height: 2em;
+	
+	float: right;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
+	
+	padding-left: 0.3em;
+	
+	font-weight: 600;
+      }
+      
+      .optionsInputText:hover {
+	background: #FAFAFA;
+      }
+      
+      .optionsText {
+	float: right;
+	padding-right: 1.5em;
+	
+	font-weight: 600;
+      }
+      
+      .optionsInputRadio {
+	font-weight: 500;
+	
+	margin-right: 0.3em;
+      }
+      
+      .optionsInputRadio:checked {
+	font-weight: 800;
+      }
+      
+      .optionsClose {
+	color: #009900;
+	background: #AAFFAA;
+	border: 1px solid #009900;
+	border-radius: 5px;
+	
+	text-decoration: none;
+	
+	float: right;
+	margin-right: 1em;
+	
+	padding: 0.2em 0.5em 0.2em 0.5em;
+	
+	font-size: 1.5em;
+      }
+      
+      .optionsClose:hover {
+	color: #00AA00;
+	background: #BBFFBB;
+      }
+    </style>
+  </head>
+  <body>
+    <div align="center">
+      <div class="options" id="game" align="center">
+	<p style="font-size: 1.2em; font-weight: 600;">Map-Einstellungen</p>
+	<table class="optionsTable">
+	  <tr>
+	    <td>
+	      <p class="optionsText">Map-Name:</p>
+	    </td>
+	    <td>
+	      <input type="text" class="optionsInputText" />
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <p class="optionsText">Autor:</p>
+	    </td>
+	    <td>
+	      <input type="text" class="optionsInputText" />
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <p class="optionsText">Schwierigkeit:</p>
+	    </td>
+	    <td>
+	      <input type="radio" class="optionsInputRadio" name="difficultyRadio" value="Leicht">Leicht</input>
+	      <input type="radio" class="optionsInputRadio" name="difficultyRadio" value="Mittel" checked="true">Mittel</input>
+	      <input type="radio" class="optionsInputRadio" name="difficultyRadio" value="Schwer">Schwer</input>
+	    </td>
+	  </tr>
+	</table>
+	<a class="optionsClose" href="#editor">OK</a>
+      </div>
+    </div>
+      
+    <div class="editorMain" id="editor">
+      
+    </div>
+  </body>
+</html>
