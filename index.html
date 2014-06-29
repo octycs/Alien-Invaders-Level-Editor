@@ -37,6 +37,13 @@
       .editorMain:target{
 	display: block;
 	visibility: visible;
+	
+	background: #DDDDDD;
+	border: none;
+	border-radius: 0.5em;
+	
+	width: 100%;
+	height: 98%
       }
       
       .optionsTable {
@@ -106,6 +113,51 @@
 	color: #00AA00;
 	background: #BBFFBB;
       }
+      
+      .editorTitle {
+	font-size: 1.5em;
+	font-weight: 800;
+	
+	width: 100%;
+	height: 5%;
+	
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+      }
+      
+      .editorMenuBar {
+	background: #CCCCCC;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	
+	width: 98%;
+	height: 10%;
+	
+	margin-left: 1%;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+      }
+      
+      .editorContentContainer {
+	background: #000000;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	
+	width: 98%;
+	height: 80%;
+	
+	margin-left: 1%;
+	margin-bottom: 0.5em;
+      }
+      
+      .editorContent {
+	background: #FFFFFF;
+	
+	width: 99%;
+	height: 97%;
+	
+	margin: 0.5%;
+      }
     </style>
   </head>
   <body>
@@ -145,7 +197,16 @@
     </div>
       
     <div class="editorMain" id="editor">
-      
+      <div class="editorTitle" align="center">
+	<span>Level-Editor</span>
+      </div>
+      <div class="editorMenuBar">
+      </div>
+      <div class="editorContentContainer" align="center">
+	<!-- CONVAS FOR CONTENT HERE -->
+	<canvas class="editorContent">
+	</canvas>
+      </div>
     </div>
   </body>
 </html>
