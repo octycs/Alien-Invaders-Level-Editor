@@ -163,8 +163,13 @@
     <script src="canvas_draw.js"></script>
     <!-- Script for level-editor -->
     <script>
+      var canvas;		//CANVAS opject
+      var cctx;		        //Canvas ConTeXt
+      
       function init()
       {
+        canvas = document.getElementById("canvas");
+        cctx = canvas.getContext("2d");
       }
     </script>
   </head>
@@ -210,16 +215,16 @@
       </div>
       <div class="editorMenuBar">
       </div>
-      <div class="editorContentContainer" align="center" id="div-container">
+      <div class="editorContentContainer" align="center">
 	<!-- CONVAS FOR CONTENT -->
-	  <canvas id="canvas" height="100" width="100">
+	  <canvas class="editorContent" id="canvas">
 	    <b>
 	      <!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
 	      Check if your browser provides <font color="#ff0000">canvases</font>.
 	    </b>
 	  </canvas>
-	<canvas class="editorContent">
-	</canvas>
+	<!-- <canvas class="editorContent">
+	</canvas> -->
       </div>
     </div>
   </body>
