@@ -159,8 +159,16 @@
 	margin: 0.5%;
       }
     </style>
+    <!-- Import script fow canvas_draw -->
+    <script src="canvas_draw.js"></script>
+    <!-- Script for level-editor -->
+    <script>
+      function init()
+      {
+      }
+    </script>
   </head>
-  <body>
+  <body onload="init();">
     <div align="center">
       <div class="options" id="game" align="center">
 	<p style="font-size: 1.2em; font-weight: 600;">Map-Einstellungen</p>
@@ -202,8 +210,14 @@
       </div>
       <div class="editorMenuBar">
       </div>
-      <div class="editorContentContainer" align="center">
-	<!-- CONVAS FOR CONTENT HERE -->
+      <div class="editorContentContainer" align="center" id="div-container">
+	<!-- CONVAS FOR CONTENT -->
+	  <canvas id="canvas" height="100" width="100">
+	    <b>
+	      <!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
+	      Check if your browser provides <font color="#ff0000">canvases</font>.
+	    </b>
+	  </canvas>
 	<canvas class="editorContent">
 	</canvas>
       </div>
