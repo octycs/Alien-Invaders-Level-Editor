@@ -12,7 +12,12 @@
 	visibility: hidden;
       }
       
-      .editorMain{
+      .editorMain {
+	display: none;
+	visibility: hidden;
+      }
+      
+      .choose {
 	display: none;
 	visibility: hidden;
       }
@@ -34,7 +39,7 @@
 	min-height: 15em;
       }
       
-      .editorMain:target{
+      .editorMain:target {
 	display: block;
 	visibility: visible;
 	
@@ -44,6 +49,21 @@
 	
 	width: 100%;
 	height: 98%
+      }
+      
+      .choose:target {
+	display: block;
+	visibility: visible;
+	
+	background: #CCCCCC;
+	border: 1px solid #000011;
+	border-radius: 0.5em;
+	
+	margin-top: 5%;
+	margin-left: -5%;
+	
+	width: 30em;
+	height: 30.5em;
       }
       
       .optionsTable {
@@ -191,6 +211,22 @@
 	
 	margin: 0.5%;
       }
+      
+      .chooseTable {
+	border: none;
+	
+	width: 100%;
+	
+	margin-bottom: 1em;
+      }
+      
+      .chooseTd {
+	width: 33%;
+      }
+      
+      .chooseImg {
+	width: 7.2em;
+      }
     </style>
     <!-- Import script fow canvas_draw -->
     <script src="canvas_draw.js"></script>
@@ -198,6 +234,7 @@
     <script>
       var canvas;		//CANVAS opject
       var cctx;		        //Canvas ConTeXt
+      var blockChosen = 1;
       
       function init()
       {
@@ -250,7 +287,7 @@
 	<table class="editorMenuBarTable">
 	  <tr>
 	    <td class="editorMenuBarTableTd">
-	      <div align="center"><a class="button">Block w&auml;hlen</a></div>
+	      <div align="center"><a class="button" href="#chooseBlock">Block w&auml;hlen</a></div>
 	    </td>
 	    <td class="editorMenuBarTableTd">
 	      <div align="center"><a class="button">Richtung</a></div>
@@ -283,6 +320,47 @@
 	  </canvas>
 	<!-- <canvas class="editorContent">
 	</canvas> -->
+      </div>
+    </div>
+    <div align="center">
+      <div class="choose" id="chooseBlock" align="center">
+	<p style="font-size: 1.2em; font-weight: 600;">Block w&auml;hlen</p>
+	<table class="chooseTable">
+	  <tr>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 1;"><img class="chooseImg" src="img/tiles/1/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 2;"><img class="chooseImg" src="img/tiles/2/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 3;"><img class="chooseImg" src="img/tiles/3/1.png"></a></div>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 4;"><img class="chooseImg" src="img/tiles/4/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 5;"><img class="chooseImg" src="img/tiles/5/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 6;"><img class="chooseImg" src="img/tiles/6/1.png"></a></div>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 7;"><img class="chooseImg" src="img/tiles/7/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 8;"><img class="chooseImg" src="img/tiles/8/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 9;"><img class="chooseImg" src="img/tiles/9/1.png"></a></div>
+	    </td>
+	  </tr>
+	</table>
+	<a class="optionsClose" href="#editor">Abbrechen</a>
       </div>
     </div>
   </body>
