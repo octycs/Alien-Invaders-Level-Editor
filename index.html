@@ -136,12 +136,43 @@
 	background: #BBFFBB;
       }
       
-      .editorTitle {
-	font-size: 1.5em;
-	font-weight: 800;
-	
+      .editorTitle {	
 	width: 100%;
 	height: 5%;
+      }
+      
+      .editorTitleTable {
+	width: 99%;
+	height: 99%;
+      }
+      
+      .editorTitleTableTd {
+	width: 33%;
+      }
+      
+      .editorSpecialButton {
+	color: #005500;
+	background: none;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	
+	text-decoration: none;
+	
+	padding: 0.1em 0.4em 0.1em 0.4em;
+	
+	cursor: pointer;
+	
+	font-size: 1.5em;
+      }
+      
+      .editorSpecialButton:hover {
+	color: #007700;
+	border: 1px solid #BBCCBB;
+      }
+      
+      .editorTitleText {
+	font-size: 1.5em;
+	font-weight: 800;
 	
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -308,8 +339,22 @@
    
     <div align="center">
       <div class="editorMain" id="editor">
-	<div class="editorTitle" align="center">
-	  <span>Level-Editor</span>
+	<div class="editorTitle">
+	  <table class="editorTitleTable">
+	    <tr>
+	      <td class="editorTitleTableTd">
+		<a class="editorSpecialButton" style="float: left;" href="#game">Optionen</a>
+	      </td>
+	      <td class="editorTitleTableTd">
+		<div align="center">
+		  <span class="editorTitleText">Level-Editor</span>
+		</div>
+	      </td>
+	      <td class="editorTitleTableTd">
+		<a class="editorSpecialButton" style="float: right;">Fertig</a>
+	      </td>
+	    </tr>
+	  </table>
 	</div>
 	<div class="editorMenuBar">
 	  <table class="editorMenuBarTable">
