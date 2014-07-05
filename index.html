@@ -12,7 +12,12 @@
 	visibility: hidden;
       }
       
-      .editorMain{
+      .editorMain {
+	display: none;
+	visibility: hidden;
+      }
+      
+      .choose {
 	display: none;
 	visibility: hidden;
       }
@@ -21,8 +26,8 @@
 	display: block;
 	visibility: visible;
 	
-	background: #CCCCCC;
-	border: 1px solid #000011;
+	background: #EEEEEE;
+	border: 1px solid #777777;
 	border-radius: 0.5em;
 	
 	margin-top: 10%;
@@ -34,16 +39,33 @@
 	min-height: 15em;
       }
       
-      .editorMain:target{
+      .editorMain:target {
 	display: block;
 	visibility: visible;
 	
-	background: #DDDDDD;
+	background: #FFFFFF;
 	border: none;
 	border-radius: 0.5em;
 	
-	width: 100%;
+	width: 70%;
+	min-width: 60em;
+	max-width: 70em;
 	height: 98%
+      }
+      
+      .choose:target {
+	display: block;
+	visibility: visible;
+	
+	background: #EEEEEE;
+	border: 1px solid #777777;
+	border-radius: 0.5em;
+	
+	margin-top: 5%;
+	margin-left: -5%;
+	
+	width: 30em;
+	height: 25.5em;
       }
       
       .optionsTable {
@@ -56,8 +78,8 @@
       
       .optionsInputText {
 	color: #444444;
-	background: #EEEEEE;
-	border: 1px solid #000000;
+	background: ##FAFAFA;
+	border: 1px solid #777777;
 	border-radius: 3px;
 	
 	width: 100%;
@@ -73,7 +95,7 @@
       }
       
       .optionsInputText:hover {
-	background: #FAFAFA;
+	border: 1px solid #AAAAAA;
       }
       
       .optionsText {
@@ -114,28 +136,114 @@
 	background: #BBFFBB;
       }
       
-      .editorTitle {
-	font-size: 1.5em;
-	font-weight: 800;
-	
+      .editorTitle {	
 	width: 100%;
 	height: 5%;
+      }
+      
+      .editorTitleTable {
+	width: 99%;
+	height: 99%;
+      }
+      
+      .editorTitleTableTd {
+	width: 33%;
+      }
+      
+      .editorSpecialButton {
+	color: #005500;
+	background: none;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	
+	text-decoration: none;
+	
+	padding: 0.1em 0.4em 0.1em 0.4em;
+	
+	cursor: pointer;
+	
+	font-size: 1.5em;
+      }
+      
+      .editorSpecialButton:hover {
+	color: #007700;
+	border: 1px solid #BBCCBB;
+      }
+      
+      .editorTitleText {
+	font-size: 1.5em;
+	font-weight: 800;
 	
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
       }
       
       .editorMenuBar {
-	background: #CCCCCC;
-	border: 1px solid #AAAAAA;
+	background: #EEEEEE;
+	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 	
 	width: 98%;
 	height: 10%;
 	
-	margin-left: 1%;
+	margin-left: 0.4%;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+      }
+      
+      .editorMenuBarTable {
+	border: none;
+	
+	width: 100%;
+	height: 100%;
+      }
+      
+      .editorMenuBarTableTd {
+	/*width: 12.4%;*/
+      }
+      
+      .chooseButton {
+	color: #000000;
+	background: #BBBBBB;
+	border: 1px solid #888888;
+	border-radius: 5px;
+	
+	height: 100%;
+	width: 100%;
+	
+	padding: 0.9em;
+	
+	text-decoration: none;
+	
+	cursor: pointer;
+      }
+      
+      .chooseButton:hover {
+	color: #222222;
+	background: #CCCCCC;
+	border: 1px solid #999999;
+      }
+      
+      .button {
+	color: #000000;
+	background: #DDDDDD;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	
+	height: 100%;
+	width: 100%;
+	
+	padding: 0.9em;
+	
+	text-decoration: none;
+	
+	cursor: pointer;
+      }
+      
+      .button:hover {
+	color: #222222;
+	background: #E9E9E9;
+	border: 1px solid #BBBBBB;
       }
       
       .editorContentContainer {
@@ -146,7 +254,7 @@
 	width: 98%;
 	height: 80%;
 	
-	margin-left: 1%;
+	margin-left: 0.4%;
 	margin-bottom: 0.5em;
       }
       
@@ -158,9 +266,42 @@
 	
 	margin: 0.5%;
       }
+      
+      .chooseTable {
+	border: none;
+	
+	width: 100%;
+	
+	margin-bottom: 1em;
+      }
+      
+      .chooseTd {
+	width: 33%;
+      }
+      
+      .chooseImg {
+	border: 1px solid #999999;
+	
+	width: 7.2em;
+	margin-bottom: 1em;
+      }
     </style>
+    <!-- Import script fow canvas_draw -->
+    <script src="canvas_draw.js"></script>
+    <!-- Script for level-editor -->
+    <script>
+      var canvas;		//CANVAS opject
+      var cctx;		        //Canvas ConTeXt
+      var blockChosen = 1;
+      
+      function init()
+      {
+        canvas = document.getElementById("canvas");
+        cctx = canvas.getContext("2d");
+      }
+    </script>
   </head>
-  <body>
+  <body onload="init();">
     <div align="center">
       <div class="options" id="game" align="center">
 	<p style="font-size: 1.2em; font-weight: 600;">Map-Einstellungen</p>
@@ -195,17 +336,98 @@
 	<a class="optionsClose" href="#editor">OK</a>
       </div>
     </div>
-      
-    <div class="editorMain" id="editor">
-      <div class="editorTitle" align="center">
-	<span>Level-Editor</span>
+   
+    <div align="center">
+      <div class="editorMain" id="editor">
+	<div class="editorTitle">
+	  <table class="editorTitleTable">
+	    <tr>
+	      <td class="editorTitleTableTd">
+		<a class="editorSpecialButton" style="float: left;" href="#game">Optionen</a>
+	      </td>
+	      <td class="editorTitleTableTd">
+		<div align="center">
+		  <span class="editorTitleText">Level-Editor</span>
+		</div>
+	      </td>
+	      <td class="editorTitleTableTd">
+		<a class="editorSpecialButton" style="float: right;">Fertig</a>
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	<div class="editorMenuBar">
+	  <table class="editorMenuBarTable">
+	    <tr>
+	      <td class="editorMenuBarTableTd">
+		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">Block w&auml;hlen</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">Setzen</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">Richtung</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">Aussehen</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">START</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">ENDE</a></div>
+		</td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">WEG</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="center"><a class="button">FREI</a></div>
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	<div class="editorContentContainer" align="center">
+	  <!-- CONVAS FOR CONTENT -->
+	    <canvas class="editorContent" id="canvas">
+	      <b>
+		<!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
+		Check if your browser provides <span style="color:#ff0000;">canvases</span>.
+	      </b>
+	    </canvas>
+	  <!-- <canvas class="editorContent">
+	  </canvas> -->
+	</div>
       </div>
-      <div class="editorMenuBar">
-      </div>
-      <div class="editorContentContainer" align="center">
-	<!-- CONVAS FOR CONTENT HERE -->
-	<canvas class="editorContent">
-	</canvas>
+    </div>
+    
+    <div align="center">
+      <div class="choose" id="chooseBlock" align="center">
+	<p style="font-size: 1.2em; font-weight: 600;">Block w&auml;hlen</p>
+	<table class="chooseTable">
+	  <tr>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 1;"><img class="chooseImg" src="img/1.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 2;"><img class="chooseImg" src="img/2.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 3;"><img class="chooseImg" src="img/3.png"></a></div>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 4;"><img class="chooseImg" src="img/4.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 5;"><img class="chooseImg" src="img/5.png"></a></div>
+	    </td>
+	    <td class="chooseTd">
+	      <div align="center"><a href="#editor" onclick="blockChosen = 9;"><img class="chooseImg" src="img/9.png"></a></div>
+	    </td>
+	  </tr>
+	</table>
+	<a class="optionsClose" href="#editor">Abbrechen</a>
       </div>
     </div>
   </body>
