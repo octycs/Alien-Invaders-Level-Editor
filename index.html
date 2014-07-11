@@ -259,7 +259,7 @@
       }
       
       .editorContent {
-	background: #FFFFFF;
+	background: #555555;
 	
 	width: 99%;
 	height: 97%;
@@ -292,13 +292,59 @@
     <script>
       var canvas;		//CANVAS opject
       var cctx;		        //Canvas ConTeXt
-      var blockChosen = 1;
+	  var mapdata;		// Data of the map
+	  var map;	  		// Map-array
+	  var xSize, ySize; 	// Size of the canvas
+	  var mapX, mapY;	// Map-size
+	  
+	  var blockChosen = 1;
       
       function init()
       {
         canvas = document.getElementById("canvas");
         cctx = canvas.getContext("2d");
+		
+		mapX = 3, mapY = 2;
+		
+		map = (JSON.parse('{"General": {"Size": {"X": 2, "Y": 3},"Tileset": "STANDARD"}, "Data":[ [ {"Tile": 1, "Dir": "W", "Meta": 1}, {"Tile": 2, "Dir": "W", "Meta": 1}, {"Tile": 3, "Dir": "W", "Meta": 1} ], [ {"Tile": 4, "Dir": "W", "Meta": 1}, {"Tile": 5, "Dir": "W", "Meta": 1}, {"Tile": 9, "Dir": "W", "Meta": 1} ] ] }')).Data;
+		drawMap(0, 0, xSize = canvas.width, ySize = canvas.height);
       }
+	  
+	  function drawMap(xOff, yOff, xSize, ySize)
+      {
+         var tileX;
+         var tileY;
+         
+         var try1;
+         var try2;
+         
+         try1 = ySize / mapY;
+         try2 = xSize / mapX;
+         if(try1 > try2)
+           tileX = try2;
+         else
+           tileX = try1;
+         tileY = tileX;
+		 
+         // Now Start Drawing
+         var i;
+         var t;
+         for (i = 0; i < mapX; i++)
+         {
+           for (t = 0; t < mapY; t++)
+           {
+             if (map[t][i].Tile < 15)
+             {
+               cctx.drawImage(document.getElementById(map[t][i].Tile.toString()),
+                              i*tileX,
+                              t*tileY,
+                              tileX,
+                              tileY);
+             }
+           }
+         }
+      }
+	  
     </script>
   </head>
   <body onload="init();">
@@ -396,7 +442,14 @@
 	    </canvas>
 	  <!-- <canvas class="editorContent">
 	  </canvas> -->
-	</div>
+			<!-- images to draw -->
+			<img src="img/1.png" height='0' width='0' id="1"/>
+			<img src="img/2.png" height='0' width='0' id="2"/>
+			<img src="img/3.png" height='0' width='0' id="3"/>
+			<img src="img/4.png" height='0' width='0' id="4"/>
+			<img src="img/5.png" height='0' width='0' id="5"/>
+			<img src="img/9.png" height='0' width='0' id="9"/>
+		</div>
       </div>
     </div>
     
