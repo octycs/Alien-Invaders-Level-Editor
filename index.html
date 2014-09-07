@@ -194,15 +194,12 @@
     </style>
     <!-- Import script fow canvas_draw -->
     <script src="canvas_draw.js"></script>
+    <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
-      var canvas;		//CANVAS opject
-      var cctx;		        //Canvas ConTeXt
-      
       function init()
       {
-        canvas = document.getElementById("canvas");
-        cctx = canvas.getContext("2d");
+        cpInit("canvas",true); //Look into documentation what this one does
       }
     </script>
   </head>

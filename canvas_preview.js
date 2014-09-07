@@ -1,5 +1,8 @@
 /**
- * Code for preview canvas(CP)
+ *       Code for preview canvas(CP)<br /> 
+ *       Prefix <i>cp (Canvas Preview)</i> is a Canvas Preview function,<br /> 
+ *       prefix <i>_cp (Canvas Preview)</i> is an internal variable and<br /> 
+ *       prefix <i>_cpc (Canvas Preview Config)</i> is used for configuration parts.
  * @author Rahix
  * @see cpInit
  * @see cpUpdate
@@ -57,7 +60,7 @@ var _cpXmlHTTP;
 //Prefix _cpc(Canvas Preview Config)
 
 /**
- * For init of _cpMapData an empty MapFile is needed, name of this file is specified here:
+ * For init of _cpMapData an empty MapFile is needed, name of this file is specified here:<br />
  * Empty Map Data FILE
  * @see _cpMapData
  */
@@ -67,6 +70,36 @@ var _cpcEmdFile = "template/empty.json";
  * @see cpInit
  */
 var _cpcAutoUPD; //If true AUTOmatically UPDate preview
+/**
+ * ID of the img tag with the standard tile image
+ */
+var _cpcImgStdTileID   = "img_tile";
+/**
+ * ID of the img tag with the up arrow tile image
+ */
+var _cpcImgUpTileID    = "img_up";
+/**
+ * ID of the img tag with the left arrow tile image
+ */
+var _cpcImgLeftTileID  = "img_left";
+/**
+ * ID of the img tag with the down arrow tile image
+ */
+var _cpcImgDownTileID  = "img_down";
+/**
+ * ID of the img tag with the right arrow tile image
+ */
+var _cpcImgRightTileID = "img_right";
+/**
+ * ID of the img tag with the start overlay tile image<br />
+ * This image will be drawn over the arrow at the start position
+ */
+var _cpcImgStartTileID = "img_start";
+/**
+ * ID of the img tag with the end overlay tile image<br />
+ * This image will be drawn over the arrow at the end position
+ */
+var _cpcImgEndTileID   = "img_end";
 
 /**
  * Inits the CP library
@@ -95,7 +128,7 @@ function cpInit(canvasID,bAutoUpdate)
 }
 
 /**
- * Updates the preview, does exact the same as cpRender.
+ * Updates the preview, does exact the same as cpRender.<br />
  * Will be called automatically if bAutoUpdate had been set true while cpInit
  * @author Rahix
  * @see cpRender
@@ -144,7 +177,7 @@ function cpGetTile(X, Y)
 }
 
 /**
- * Return JSON coded map data.
+ * Return JSON coded map data.<br />
  * This is the finished result you can use as map
  * @author Rahix
  * @return {Object} The JSON coded map data

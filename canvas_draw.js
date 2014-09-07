@@ -1,13 +1,14 @@
 /**
- * Drawing functions called by cpRender()
+ * @file Drawing functions called by <b>cpRender()</b>. 
+ *       Prefix <i>_cpd</i> means "Canvas Preview Drawing"
  * @author: Rahix
  * @see cpRender
  */
 
 
 /**
- * Draws map into canvas
- * @author rahix
+ * Draws the map onto the canvas
+ * @author Rahix
  * @param {Object} xOff Let this one be 0, you won't need this
  * @param {Object} yOff Let this one be 0, you won't need this
  */
@@ -30,14 +31,18 @@ function _cpdDrawMap(xOff, yOff)
 	}
 }
 
-function erase()
+/**
+ * Erases the screen
+ * @author Rahix
+ */
+function _cpdErase()
 {
 	_cpCCTX.fillRect(0,0,_cpCanvasObj.width,_cpCanvasObj.height);
 }
 
 /**
  * Draws everything, calls _cpdDrawMap
- * @author rahix
+ * @author Rahix
  */
 function _cpdDraw() 
 {
