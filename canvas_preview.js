@@ -186,4 +186,5 @@ function cpGetMapJSON()
 {
 	//@TODO Return finished file content for map
 	// This one will be uploaded to the database
+	return JSON.stringify(_cpMapData);
 }
