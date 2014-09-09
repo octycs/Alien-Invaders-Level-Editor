@@ -148,6 +148,7 @@ function cpUpdate()
 function cpRender() 
 {
 	//@TODO Add render code
+	_cpdDraw();
 }
 
 /**
@@ -200,8 +201,8 @@ function cpGetTileDimension()
     var tiledim;
          
     //@TODO Make this shit better ...
-    try1 = canvas.height / mapdata.General.Size.Y;
-    try2 = canvas.width / mapdata.General.Size.X;
+    try1 = _cpCanvasObj.height / _cpMapData.General.Size.Y;
+    try2 = _cpCanvasObj.width / _cpMapData.General.Size.X;
     if(try1 > try2)
       tiledim = try2;
     else

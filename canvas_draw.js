@@ -25,7 +25,7 @@ function _cpdDrawMap(xOff, yOff)
 	for ( i = 0; i < _cpMapData.General.Size.X; i++) {
 		for ( t = 0; t < _cpMapData.General.Size.Y; t++) {
 			if (_cpMap[t][i].Tile < 15) {
-				_cpCCTX.drawImage(document.getElementById('tile'), i * tiledim, t * tiledim, tiledim, tiledim);
+				_cpCCTX.drawImage(document.getElementById("img_tile"), i * tiledim, t * tiledim, tiledim, tiledim);
 			}
 		}
 	}
@@ -46,6 +46,6 @@ function _cpdErase()
  */
 function _cpdDraw() 
 {
-	erase();
-	drawMap(0, 0);
+	_cpdErase();
+	_cpdDrawMap(0, 0);
 }
