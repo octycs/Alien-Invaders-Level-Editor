@@ -121,7 +121,7 @@ function cpInit(canvasID,bAutoUpdate)
 		_cpXmlHTTP = new ActiveXObject("Microsoft.XMLHTTP");
 	_cpXmlHTTP.open("GET", _cpcEmdFile, false);
 	_cpXmlHTTP.send();
-	_cpMapData = JSOM.parse(_cpXmlHTTP.responseText);
+	_cpMapData = JSON.parse(_cpXmlHTTP.responseText);
 	_cpMap = _cpMapData.Data;
 	
 	_cpcAutoUPD = bAutoUpdate;
