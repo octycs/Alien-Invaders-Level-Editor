@@ -14,18 +14,18 @@
  */
 function _cpdDrawMap(xOff, yOff) 
 {
-	var tileX;
-	var tileY;
+	var tiledim;
 
-	tileX = tiledim;
-	tileY = tileX;
+
+	//Get tile dimension
+	tiledim = cpGetTileDimension();
 	//Now Start to Draw
 	var i;
 	var t;
 	for ( i = 0; i < _cpMapData.General.Size.X; i++) {
 		for ( t = 0; t < _cpMapData.General.Size.Y; t++) {
 			if (_cpMap[t][i].Tile < 15) {
-				_cpCCTX.drawImage(document.getElementById('tile'), i * tileX, t * tileY, tileX, tileY);
+				_cpCCTX.drawImage(document.getElementById('tile'), i * tiledim, t * tiledim, tiledim, tiledim);
 			}
 		}
 	}

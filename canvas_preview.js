@@ -184,7 +184,28 @@ function cpGetTile(X, Y)
  */
 function cpGetMapJSON() 
 {
-	//@TODO Return finished file content for map
 	// This one will be uploaded to the database
 	return JSON.stringify(_cpMapData);
+}
+
+/**
+ * Return the X size of the tiles.<br />
+ * This function should be called whenever the tile that has been clicked should be found out.<br />
+ * <b>ATTENTION:</b> This value WILL change if the window is resized!
+ */
+function cpGetTileDimension()
+{
+	var try1;
+    var try2;
+    var tiledim;
+         
+    //@TODO Make this shit better ...
+    try1 = canvas.height / mapdata.General.Size.Y;
+    try2 = canvas.width / mapdata.General.Size.X;
+    if(try1 > try2)
+      tiledim = try2;
+    else
+      tiledim = try1;
+      
+    return tiledim;
 }
