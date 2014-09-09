@@ -197,9 +197,18 @@
     <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
+      // Dummy init for example
+      // Look into the documentation what this one does
       function init()
       {
-        cpInit("canvas",true); //Look into documentation what this one does
+        cpInit("canvas",true);
+        //Create main loop
+        window.setInterval(update,1/30);//30 FPS
+      }
+      
+      function update()
+      {
+      	cpUpdate();
       }
     </script>
   </head>
