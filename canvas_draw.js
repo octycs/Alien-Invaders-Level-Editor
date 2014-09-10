@@ -48,6 +48,13 @@ function _cpdDrawMap(xOff, yOff)
 	}
 }
 
+
+/**
+ * Draw a way arrow.
+ * @param {Object} tiledim Tiledimension of tiles
+ * @param {Object} i Y coordinate of way tile
+ * @param {Object} t X coordinate of way tile
+ */
 function _cpdDrawWayArrow(tiledim, i, t) 
 {
 	if (_cpMap[t][i].Dir == "N") 
