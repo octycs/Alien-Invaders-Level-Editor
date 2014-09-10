@@ -291,16 +291,28 @@
     <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
+      // Update size listener
+      window.onresize = updateSize;
       // Dummy init for example
       // Look into the documentation what this one does
       function init()
       {
-        cpInit("canvas",true);
-        update();
+        cpInit("canvas", true);
+        updateSize();
       }
       
       function update()
       {
+	// draw
+      	cpUpdate();
+      }
+      
+      function updateSize()
+      {
+	// set canvas size
+	document.getElementById("canvas").width = document.getElementById("canvas").offsetWidth;
+	document.getElementById("canvas").height = document.getElementById("canvas").offsetHeight;
+	// draw
       	cpUpdate();
       }
     </script>
@@ -337,7 +349,7 @@
 	    </td>
 	  </tr>
 	</table>
-	<a class="optionsClose" href="#editor">OK</a>
+	<a class="optionsClose" href="#editor" onclick="init()">OK</a>
       </div>
     </div>
    
@@ -398,16 +410,15 @@
 		Check if your browser provides <span style="color:#ff0000;">canvases</span>.
 	      </b>
 	    </canvas>
-	  <!-- <canvas class="editorContent">
-	  </canvas> -->
-			<!-- images to draw -->
-			<img src="img/1.png" height='0' width='0' id="1"/>
-			<img src="img/2.png" height='0' width='0' id="2"/>
-			<img src="img/3.png" height='0' width='0' id="3"/>
-			<img src="img/4.png" height='0' width='0' id="4"/>
-			<img src="img/5.png" height='0' width='0' id="5"/>
-			<img src="img/9.png" height='0' width='0' id="9"/>
-		</div>
+	  <!-- IMAGES FOR CP -->
+	  <img src="img/tiles/standard.png" width="0" height="0" id="img_tile" />
+	  <img src="img/tiles/up.png" width="0" height="0" id="img_up" />
+	  <img src="img/tiles/down.png" width="0" height="0" id="img_down" />
+	  <img src="img/tiles/left.png" width="0" height="0" id="img_left" />
+	  <img src="img/tiles/right.png" width="0" height="0" id="img_right" />
+	  <img src="img/tiles/start.png" width="0" height="0" id="img_start" />
+	  <img src="img/tiles/end.png" width="0" height="0" id="img_end" />
+	</div>
       </div>
     </div>
     
@@ -438,23 +449,7 @@
 	    </td>
 	  </tr>
 	</table>
-      <div class="editorContentContainer" align="center">
-	<!-- CONVAS FOR CONTENT -->
-	    <canvas class="editorContent" id="canvas">
-	      <b>
-	        <!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
-	        Check if your browser provides <span style="color:#ff0000;">canvases</span>.
-	      </b>
-	    </canvas>
-	    <!-- IMAGES FOR CP -->
-	    <img src="img/tiles/standard.png" width="0" height="0" id="img_tile" />
-	    <img src="img/tiles/up.png" width="0" height="0" id="img_up" />
-	    <img src="img/tiles/down.png" width="0" height="0" id="img_down" />
-	    <img src="img/tiles/left.png" width="0" height="0" id="img_left" />
-	    <img src="img/tiles/right.png" width="0" height="0" id="img_right" />
-	    <img src="img/tiles/start.png" width="0" height="0" id="img_start" />
-	    <img src="img/tiles/end.png" width="0" height="0" id="img_end" />
-	    <a class="optionsClose" href="#editor">Abbrechen</a>
+	<a class="optionsClose" href="#editor">Abbrechen</a>
       </div>
     </div>
   </body>
