@@ -291,16 +291,28 @@
     <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
+      // Update size listener
+      window.onresize = updateSize;
       // Dummy init for example
       // Look into the documentation what this one does
       function init()
       {
-        cpInit("canvas",true);
-        update();
+        cpInit("canvas", true);
+        updateSize();
       }
       
       function update()
       {
+	// draw
+      	cpUpdate();
+      }
+      
+      function updateSize()
+      {
+	// set canvas size
+	document.getElementById("canvas").width = document.getElementById("canvas").offsetWidth;
+	document.getElementById("canvas").height = document.getElementById("canvas").offsetHeight;
+	// draw
       	cpUpdate();
       }
     </script>
@@ -337,7 +349,7 @@
 	    </td>
 	  </tr>
 	</table>
-	<a class="optionsClose" href="#editor">OK</a>
+	<a class="optionsClose" href="#editor" onclick="init()">OK</a>
       </div>
     </div>
    
