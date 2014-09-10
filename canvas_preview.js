@@ -200,13 +200,7 @@ function cpGetTileDimension()
     var try2;
     var tiledim;
          
-    //@TODO Make this shit better ...
-    try1 = _cpCanvasObj.height / _cpMapData.General.Size.Y;
-    try2 = _cpCanvasObj.width / _cpMapData.General.Size.X;
-    if(try1 > try2)
-      tiledim = try2;
-    else
-      tiledim = try1;
+    tiledim = ((try1 = _cpCanvasObj.height / _cpMapData.General.Size.Y)>(try2 = _cpCanvasObj.width / _cpMapData.General.Size.X))?(try2):(try1);
       
     return tiledim;
 }
