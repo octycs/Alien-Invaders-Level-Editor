@@ -294,7 +294,7 @@
       // Vars
       var mouseDown = false;
       var blockChosen = 0;
-      var activeX, activeY, isActive = false;
+      var activeX, activeY, activeDir = "W", isActive = false;
       // Update size listener
       window.onresize = updateSize;
       // Dummy init for example
@@ -308,7 +308,7 @@
       function update()
       {
 	// draw
-      	cpUpdate();
+	cpUpdate();
       }
       
       function updateSize()
@@ -324,6 +324,8 @@
       {
 	mouseDown = true;
 	setActive(event.clientX, event.clientY, true);
+	// update
+	update();
       }
       
       function onMouseUp(event)
@@ -336,6 +338,9 @@
 	if(mouseDown)
 	{
 	  setActive(event.clientX, event.clientY, false);
+	  cpSetTile(activeX, activeY, blockChosen, activeDir);
+	  // update
+	  update();
 	}
       }
       
@@ -367,8 +372,23 @@
 	  activeX = tileX;
 	  activeY = tileY;
 	}
-	// update
-	update();
+      }
+      
+      function setActiveTile()
+      {
+	if(isActive)
+	{
+	  cpSetTile(activeX, activeY, blockChosen, activeDir);
+	  update();
+	}
+      }
+      
+      function rotateActiveTile()
+      {
+	if(isActive)
+	{
+	  
+	}
       }
     </script>
   </head>
@@ -434,7 +454,7 @@
 		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">Block w&auml;hlen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">Setzen</a></div>
+		<div align="center"><a class="button" onclick="setActiveTile()">Setzen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
 		<div align="center"><a class="button">Richtung</a></div>
@@ -443,16 +463,16 @@
 		<div align="center"><a class="button">Aussehen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">START</a></div>
+		<div align="center"><a class="button" onclick="blockChosen = 17;">START</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">ENDE</a></div>
+		<div align="center"><a class="button" onclick="blockChosen = 16;">ENDE</a></div>
 		</td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">WEG</a></div>
+		<div align="center"><a class="button" onclick="blockChosen = 15;">WEG</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">FREI</a></div>
+		<div align="center"><a class="button" onclick="blockChosen = 0;">FREI</a></div>
 	      </td>
 	    </tr>
 	  </table>
