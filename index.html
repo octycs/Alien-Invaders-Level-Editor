@@ -291,6 +291,10 @@
     <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
+      // Vars
+      var mouseDown = false;
+      var blockChosen = 0;
+      var activeX, activeY, isActive = false;
       // Update size listener
       window.onresize = updateSize;
       // Dummy init for example
@@ -318,17 +322,52 @@
       
       function onMouseDown(event)
       {
-	
+	mouseDown = true;
+	setActive(event.clientX, event.clientY);
       }
       
       function onMouseUp(event)
       {
-	
+	mouseDown = false;
       }
       
       function onMouseMove(event)
       {
-	
+	if(mouseDown)
+	{
+	  setActive(event.clientX, event.clientY);
+	}
+      }
+      
+      function setActive(canvasX, canvasY)
+      {
+	// Get tile dimension
+	tiledim = cpGetTileDimension();
+	// Calculate tile
+	/*ar xOffset = ((_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2);
+	var yOffset = ((_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2);*/
+	var tileX = Math.floor(((canvasX - document.getElementById("canvas").offsetLeft) - ((_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2)) / tiledim);
+	var tileY = Math.floor(((canvasY - document.getElementById("canvas").offsetTop) - ((_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2)) / tiledim);
+	// set as active or disable active tile if same
+	if(isActive)
+	{
+	  if(activeX == tileX && activeY == tileY)
+	  {
+	    isActive = false;
+	  }
+	  else
+	  {
+	    activeX = tileX;
+	    activeY = tileY;
+	  }
+	}
+	else
+	{
+	  activeX = tileX;
+	  activeY = tileY;
+	}
+	// update
+	update();
       }
     </script>
   </head>

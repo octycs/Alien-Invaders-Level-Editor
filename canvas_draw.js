@@ -28,24 +28,27 @@ function _cpdDrawMap(xOff, yOff)
 		{
 			if (_cpMap[t][i].Tile < 15) 
 			{
-				_cpCCTX.drawImage(document.getElementById("img_tile"), i * tiledim, t * tiledim, tiledim, tiledim);
+				_cpCCTX.drawImage(document.getElementById("img_tile"), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 			}
 			else if(_cpMap[t][i].Tile == 17) //Start
 			{
 				_cpdDrawWayArrow(tiledim,i,t);
-				_cpCCTX.drawImage(document.getElementById(_cpcImgStartTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+				_cpCCTX.drawImage(document.getElementById(_cpcImgStartTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 			}
 			else if(_cpMap[t][i].Tile == 16)//End
 			{
 				_cpdDrawWayArrow(tiledim,i,t);
-				_cpCCTX.drawImage(document.getElementById(_cpcImgEndTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+				_cpCCTX.drawImage(document.getElementById(_cpcImgEndTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 			}
 			else if(_cpMap[t][i].Tile == 15)//Way
 			{
-				_cpdDrawWayArrow(tiledim,i,t);
+				_cpdDrawWayArrow(tiledim,i,t,xOff,yOff);
 			}
 		}
 	}
+	// draw active
+	_cpCCTX.fillStyle = "rgba(200,0,0,0.7)";
+	_cpCCTX.fillRect((activeX * tiledim) + xOff, (activeY * tiledim) + yOff, tiledim, tiledim);
 }
 
 
@@ -55,23 +58,23 @@ function _cpdDrawMap(xOff, yOff)
  * @param {Object} i Y coordinate of way tile
  * @param {Object} t X coordinate of way tile
  */
-function _cpdDrawWayArrow(tiledim, i, t) 
+function _cpdDrawWayArrow(tiledim, i, t, xOff, yOff) 
 {
 	if (_cpMap[t][i].Dir == "N") 
 	{
-		_cpCCTX.drawImage(document.getElementById(_cpcImgUpTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+		_cpCCTX.drawImage(document.getElementById(_cpcImgUpTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 	}
 	if (_cpMap[t][i].Dir == "E") 
 	{
-		_cpCCTX.drawImage(document.getElementById(_cpcImgRightTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+		_cpCCTX.drawImage(document.getElementById(_cpcImgRightTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 	}
 	if (_cpMap[t][i].Dir == "S") 
 	{
-		_cpCCTX.drawImage(document.getElementById(_cpcImgDownTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+		_cpCCTX.drawImage(document.getElementById(_cpcImgDownTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 	}
 	if (_cpMap[t][i].Dir == "W") 
 	{
-		_cpCCTX.drawImage(document.getElementById(_cpcImgLeftTileID), i * tiledim, t * tiledim, tiledim, tiledim);
+		_cpCCTX.drawImage(document.getElementById(_cpcImgLeftTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 	}
 }
 
@@ -82,6 +85,7 @@ function _cpdDrawWayArrow(tiledim, i, t)
  */
 function _cpdErase()
 {
+	_cpCCTX.fillStyle = "rgba(0,0,0,1)";
 	_cpCCTX.fillRect(0,0,_cpCanvasObj.width,_cpCanvasObj.height);
 }
 
@@ -91,6 +95,11 @@ function _cpdErase()
  */
 function _cpdDraw() 
 {
+	// Get tile dimension
+	tiledim = cpGetTileDimension();
+	// Draw
 	_cpdErase();
-	_cpdDrawMap(0, 0);
+	_cpdDrawMap(
+	  (_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2,
+	  (_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2);
 }

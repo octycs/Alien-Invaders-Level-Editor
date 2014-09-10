@@ -197,10 +197,10 @@ function cpGetMapJSON()
 function cpGetTileDimension()
 {
 	var try1;
-    var try2;
-    var tiledim;
-         
-    tiledim = ((try1 = _cpCanvasObj.height / _cpMapData.General.Size.Y)>(try2 = _cpCanvasObj.width / _cpMapData.General.Size.X))?(try2):(try1);
-      
-    return tiledim;
+	var try2;
+	var tiledim;
+        
+	tiledim = ((try1 = _cpCanvasObj.height / _cpMapData.General.Size.Y)>(try2 = _cpCanvasObj.width / _cpMapData.General.Size.X))?(try2):(try1);
+	
+	return tiledim;
 }
