@@ -315,6 +315,21 @@
 	// draw
       	cpUpdate();
       }
+      
+      function onMouseDown(event)
+      {
+	
+      }
+      
+      function onMouseUp(event)
+      {
+	
+      }
+      
+      function onMouseMove(event)
+      {
+	
+      }
     </script>
   </head>
   <body onload="init();">
@@ -404,7 +419,10 @@
 	</div>
 	<div class="editorContentContainer" align="center">
 	  <!-- CONVAS FOR CONTENT -->
-	    <canvas class="editorContent" id="canvas">
+	    <canvas class="editorContent" id="canvas"
+		onmousedown="onMouseDown(event)"
+		onmouseup="onMouseUp(event)"
+		onmousemove="onMouseMove(event)">
 	      <b>
 		<!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
 		Check if your browser provides <span style="color:#ff0000;">canvases</span>.
