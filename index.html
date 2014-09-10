@@ -323,7 +323,7 @@
       function onMouseDown(event)
       {
 	mouseDown = true;
-	setActive(event.clientX, event.clientY);
+	setActive(event.clientX, event.clientY, true);
       }
       
       function onMouseUp(event)
@@ -335,11 +335,11 @@
       {
 	if(mouseDown)
 	{
-	  setActive(event.clientX, event.clientY);
+	  setActive(event.clientX, event.clientY, false);
 	}
       }
       
-      function setActive(canvasX, canvasY)
+      function setActive(canvasX, canvasY, canDeselect)
       {
 	// Get tile dimension
 	tiledim = cpGetTileDimension();
@@ -351,7 +351,7 @@
 	// set as active or disable active tile if same
 	if(isActive)
 	{
-	  if(activeX == tileX && activeY == tileY)
+	  if(activeX == tileX && activeY == tileY && canDeselect)
 	  {
 	    isActive = false;
 	  }
@@ -363,6 +363,7 @@
 	}
 	else
 	{
+	  isActive = true;
 	  activeX = tileX;
 	  activeY = tileY;
 	}

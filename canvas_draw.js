@@ -46,9 +46,16 @@ function _cpdDrawMap(xOff, yOff)
 			}
 		}
 	}
-	// draw active
-	_cpCCTX.fillStyle = "rgba(200,0,0,0.7)";
-	_cpCCTX.fillRect((activeX * tiledim) + xOff, (activeY * tiledim) + yOff, tiledim, tiledim);
+	// draw active tile
+	if(isActive)
+	{
+	  _cpCCTX.strokeStyle = "rgba(255,0,0,1)";
+	  _cpCCTX.strokeRect((activeX * tiledim) + xOff, (activeY * tiledim) + yOff, tiledim, tiledim);
+	  _cpCCTX.strokeStyle = "rgba(225,0,0,1)";
+	  _cpCCTX.strokeRect((activeX * tiledim) + xOff + 1, (activeY * tiledim) + yOff + 1, tiledim - 2, tiledim - 2);
+	  _cpCCTX.strokeStyle = "rgba(200,0,0,1)";
+	  _cpCCTX.strokeRect((activeX * tiledim) + xOff + 2, (activeY * tiledim) + yOff + 2, tiledim - 4, tiledim - 4);
+	}
 }
 
 
