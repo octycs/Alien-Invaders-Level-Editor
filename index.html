@@ -78,7 +78,7 @@
       
       .optionsInputText {
 	color: #444444;
-	background: ##FAFAFA;
+	background: #FAFAFA;
 	border: 1px solid #777777;
 	border-radius: 3px;
 	
@@ -288,63 +288,21 @@
     </style>
     <!-- Import script fow canvas_draw -->
     <script src="canvas_draw.js"></script>
+    <script src="canvas_preview.js"></script>
     <!-- Script for level-editor -->
     <script>
-      var canvas;		//CANVAS opject
-      var cctx;		        //Canvas ConTeXt
-	  var mapdata;		// Data of the map
-	  var map;	  		// Map-array
-	  var xSize, ySize; 	// Size of the canvas
-	  var mapX, mapY;	// Map-size
-	  
-	  var blockChosen = 1;
-      
+      // Dummy init for example
+      // Look into the documentation what this one does
       function init()
       {
-        canvas = document.getElementById("canvas");
-        cctx = canvas.getContext("2d");
-		
-		mapX = 3, mapY = 2;
-		
-		map = (JSON.parse('{"General": {"Size": {"X": 2, "Y": 3},"Tileset": "STANDARD"}, "Data":[ [ {"Tile": 1, "Dir": "W", "Meta": 1}, {"Tile": 2, "Dir": "W", "Meta": 1}, {"Tile": 3, "Dir": "W", "Meta": 1} ], [ {"Tile": 4, "Dir": "W", "Meta": 1}, {"Tile": 5, "Dir": "W", "Meta": 1}, {"Tile": 9, "Dir": "W", "Meta": 1} ] ] }')).Data;
-		drawMap(0, 0, xSize = canvas.width, ySize = canvas.height);
+        cpInit("canvas",true);
+        update();
       }
-	  
-	  function drawMap(xOff, yOff, xSize, ySize)
+      
+      function update()
       {
-         var tileX;
-         var tileY;
-         
-         var try1;
-         var try2;
-         
-         try1 = ySize / mapY;
-         try2 = xSize / mapX;
-         if(try1 > try2)
-           tileX = try2;
-         else
-           tileX = try1;
-         tileY = tileX;
-		 
-         // Now Start Drawing
-         var i;
-         var t;
-         for (i = 0; i < mapX; i++)
-         {
-           for (t = 0; t < mapY; t++)
-           {
-             if (map[t][i].Tile < 15)
-             {
-               cctx.drawImage(document.getElementById(map[t][i].Tile.toString()),
-                              i*tileX,
-                              t*tileY,
-                              tileX,
-                              tileY);
-             }
-           }
-         }
+      	cpUpdate();
       }
-	  
     </script>
   </head>
   <body onload="init();">
@@ -480,7 +438,23 @@
 	    </td>
 	  </tr>
 	</table>
-	<a class="optionsClose" href="#editor">Abbrechen</a>
+      <div class="editorContentContainer" align="center">
+	<!-- CONVAS FOR CONTENT -->
+	    <canvas class="editorContent" id="canvas">
+	      <b>
+	        <!-- Message if canvas doesn't work -->You can't use this leveleditor :/<br />
+	        Check if your browser provides <span style="color:#ff0000;">canvases</span>.
+	      </b>
+	    </canvas>
+	    <!-- IMAGES FOR CP -->
+	    <img src="img/tiles/standard.png" width="0" height="0" id="img_tile" />
+	    <img src="img/tiles/up.png" width="0" height="0" id="img_up" />
+	    <img src="img/tiles/down.png" width="0" height="0" id="img_down" />
+	    <img src="img/tiles/left.png" width="0" height="0" id="img_left" />
+	    <img src="img/tiles/right.png" width="0" height="0" id="img_right" />
+	    <img src="img/tiles/start.png" width="0" height="0" id="img_start" />
+	    <img src="img/tiles/end.png" width="0" height="0" id="img_end" />
+	    <a class="optionsClose" href="#editor">Abbrechen</a>
       </div>
     </div>
   </body>
