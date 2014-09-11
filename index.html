@@ -22,6 +22,11 @@
 	visibility: hidden;
       }
       
+      .result {
+	display: none;
+	visibility: hidden;
+      }
+      
       .options:target {
 	display: block;
 	visibility: visible;
@@ -66,6 +71,21 @@
 	
 	width: 30em;
 	height: 25.5em;
+      }
+      
+      .result:target {
+	display: block;
+	visibility: visible;
+	
+	background: #EEEEEE;
+	border: 1px solid #777777;
+	border-radius: 0.5em;
+	
+	margin-top: 5%;
+	margin-left: -5%;
+	
+	width: 50em;
+	height: 41em;
       }
       
       .optionsTable {
@@ -285,6 +305,13 @@
 	width: 7.2em;
 	margin-bottom: 1em;
       }
+      
+      .resultInput {
+	width: 95%;
+	height: 32.5em;
+	
+	margin-bottom: 1em;
+      }
     </style>
     <!-- Import script fow canvas_draw -->
     <script src="canvas_draw.js"></script>
@@ -409,10 +436,16 @@
       {
 	if(isActive)
 	{
-	  activeMeta++;
+	  // AT THE MOMENT NOT SUPPORTED BY DRAWING LIBRARY
+	  /*activeMeta++;
 	  cpSetTile(activeX, activeY, cpGetTile(activeX, activeY).Tile, cpGetTile(activeX, activeY).Dir, activeMeta);
-	  update();
+	  update();*/
 	}
+      }
+      
+      function showResult()
+      {
+	document.getElementById("result").value = cpGetMapJSON();
       }
     </script>
   </head>
@@ -466,7 +499,7 @@
 		</div>
 	      </td>
 	      <td class="editorTitleTableTd">
-		<a class="editorSpecialButton" style="float: right;">Fertig</a>
+		<a class="editorSpecialButton" style="float: right;" href="#done" onclick="showResult();">Fertig</a>
 	      </td>
 	    </tr>
 	  </table>
@@ -481,7 +514,7 @@
 		<div align="center"><a class="button" onclick="rotateActiveTile();">Richtung</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">Aussehen</a></div>
+		<div align="center"><a class="button" onclick="setActiveMeta();">Aussehen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
 		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">BLOCK</a></div>
@@ -552,6 +585,14 @@
 	  </tr>
 	</table>
 	<a class="optionsClose" href="#editor">Abbrechen</a>
+      </div>
+    </div>
+    
+    <div align="center">
+      <div class="result" id="done" align="center">
+	<p style="font-size: 1.2em; font-weight: 600;">Mapdaten:</p>
+	<textarea class="resultInput" id="result"></textarea>
+	<a class="optionsClose" href="#editor">Zur&uuml;ck</a>
       </div>
     </div>
   </body>
