@@ -51,10 +51,10 @@ function _cpdDrawMap(xOff, yOff)
 	{
 	  _cpCCTX.strokeStyle = "rgba(255,0,0,1)";
 	  _cpCCTX.strokeRect((activeX * tiledim) + xOff, (activeY * tiledim) + yOff, tiledim, tiledim);
-	  _cpCCTX.strokeStyle = "rgba(225,0,0,1)";
-	  _cpCCTX.strokeRect((activeX * tiledim) + xOff + 1, (activeY * tiledim) + yOff + 1, tiledim - 2, tiledim - 2);
-	  _cpCCTX.strokeStyle = "rgba(200,0,0,1)";
+	  _cpCCTX.strokeStyle = "rgba(255,0,0,0.6)";
 	  _cpCCTX.strokeRect((activeX * tiledim) + xOff + 2, (activeY * tiledim) + yOff + 2, tiledim - 4, tiledim - 4);
+	  _cpCCTX.strokeStyle = "rgba(255,0,0,0.3)";
+	  _cpCCTX.strokeRect((activeX * tiledim) + xOff + 4, (activeY * tiledim) + yOff + 4, tiledim - 8, tiledim - 8);
 	}
 }
 

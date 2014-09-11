@@ -295,6 +295,7 @@
       var mouseDown = false;
       var blockChosen = 0;
       var activeX, activeY, activeID = 0, activeDir = "N", activeMeta = 1, isActive = false;
+      var timer;
       // Update size listener
       window.onresize = updateSize;
       // Dummy init for example
@@ -303,6 +304,7 @@
       {
         cpInit("canvas", true);
         updateSize();
+        timer = window.setInterval(updateSize, 500);
       }
       
       function update()
@@ -342,8 +344,6 @@
 	{
 	  setActive(event.clientX, event.clientY, false);
 	  setActiveTile(false, activeID);
-	  // update
-	  update();
 	}
       }
       
@@ -354,24 +354,28 @@
 	// Calculate tile
 	var tileX = Math.floor(((canvasX - document.getElementById("canvas").offsetLeft) - ((_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2)) / tiledim);
 	var tileY = Math.floor(((canvasY - document.getElementById("canvas").offsetTop) - ((_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2)) / tiledim);
-	// set as active or disable active tile if same
-	if(isActive)
+	// If it's not outside
+	if(tileX >= 0 && tileY >= 0 && tileX < _cpMapData.General.Size.X && tileY < _cpMapData.General.Size.Y)
 	{
-	  if(activeX == tileX && activeY == tileY && canDeselect)
+	  // set as active or disable active tile if same
+	  if(isActive)
 	  {
-	    isActive = false;
+	    if(activeX == tileX && activeY == tileY && canDeselect)
+	    {
+	      isActive = false;
+	    }
+	    else
+	    {
+	      activeX = tileX;
+	      activeY = tileY;
+	    }
 	  }
 	  else
 	  {
+	    isActive = true;
 	    activeX = tileX;
 	    activeY = tileY;
 	  }
-	}
-	else
-	{
-	  isActive = true;
-	  activeX = tileX;
-	  activeY = tileY;
 	}
       }
       
@@ -444,7 +448,7 @@
 	    </td>
 	  </tr>
 	</table>
-	<a class="optionsClose" href="#editor" onclick="init()">OK</a>
+	<a class="optionsClose" href="#editor">OK</a>
       </div>
     </div>
    
@@ -471,9 +475,6 @@
 	  <table class="editorMenuBarTable">
 	    <tr>
 	      <td class="editorMenuBarTableTd">
-		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">Block w&auml;hlen</a></div>
-	      </td>
-	      <td class="editorMenuBarTableTd">
 		<div align="center"><a class="button" onclick="setActiveTile(true, blockChosen);">Setzen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
@@ -483,16 +484,19 @@
 		<div align="center"><a class="button">Aussehen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button" onclick="blockChosen = 17;">START</a></div>
+		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">BLOCK</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button" onclick="blockChosen = 16;">ENDE</a></div>
+		<div align="left"><a class="chooseButton" onclick="blockChosen = 17;">START</a></div>
+	      </td>
+	      <td class="editorMenuBarTableTd">
+		<div align="left"><a class="chooseButton" onclick="blockChosen = 16;">ENDE</a></div>
 		</td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button" onclick="blockChosen = 15;">WEG</a></div>
+		<div align="left"><a class="chooseButton" onclick="blockChosen = 15;">WEG</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button" onclick="blockChosen = 0;">FREI</a></div>
+		<div align="left"><a class="chooseButton" onclick="blockChosen = 0;">FREI</a></div>
 	      </td>
 	    </tr>
 	  </table>
