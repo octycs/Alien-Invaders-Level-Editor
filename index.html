@@ -294,7 +294,7 @@
       // Vars
       var mouseDown = false;
       var blockChosen = 0;
-      var activeX, activeY, activeDir = "W", isActive = false;
+      var activeX, activeY, activeID = 0, activeDir = "N", activeMeta = 1, isActive = false;
       // Update size listener
       window.onresize = updateSize;
       // Dummy init for example
@@ -324,6 +324,9 @@
       {
 	mouseDown = true;
 	setActive(event.clientX, event.clientY, true);
+	activeDir = cpGetTile(activeX, activeY).Dir;
+	activeMeta = cpGetTile(activeX, activeY).Meta;
+	activeID = cpGetTile(activeX, activeY).Tile;
 	// update
 	update();
       }
@@ -338,7 +341,7 @@
 	if(mouseDown)
 	{
 	  setActive(event.clientX, event.clientY, false);
-	  cpSetTile(activeX, activeY, blockChosen, activeDir);
+	  setActiveTile(false, activeID);
 	  // update
 	  update();
 	}
@@ -349,8 +352,6 @@
 	// Get tile dimension
 	tiledim = cpGetTileDimension();
 	// Calculate tile
-	/*ar xOffset = ((_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2);
-	var yOffset = ((_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2);*/
 	var tileX = Math.floor(((canvasX - document.getElementById("canvas").offsetLeft) - ((_cpCanvasObj.width - (_cpMapData.General.Size.X * tiledim)) / 2)) / tiledim);
 	var tileY = Math.floor(((canvasY - document.getElementById("canvas").offsetTop) - ((_cpCanvasObj.height - (_cpMapData.General.Size.Y * tiledim)) / 2)) / tiledim);
 	// set as active or disable active tile if same
@@ -374,11 +375,11 @@
 	}
       }
       
-      function setActiveTile()
+      function setActiveTile(reset, TID)
       {
 	if(isActive)
 	{
-	  cpSetTile(activeX, activeY, blockChosen, activeDir);
+	  cpSetTile(activeX, activeY, TID, reset ? "N" : activeDir, reset ? 1 : activeMeta);
 	  update();
 	}
       }
@@ -387,7 +388,26 @@
       {
 	if(isActive)
 	{
-	  
+	  if(activeDir == "N")
+	    activeDir = "E";
+	  else if(activeDir == "E")
+	    activeDir = "S";
+	  else if(activeDir == "S")
+	    activeDir = "W";
+	  else if(activeDir == "W")
+	    activeDir = "N";
+	  cpSetTile(activeX, activeY, cpGetTile(activeX, activeY).Tile, activeDir, cpGetTile(activeX, activeY).Meta);
+	  update();
+	}
+      }
+      
+      function setActiveMeta()
+      {
+	if(isActive)
+	{
+	  activeMeta++;
+	  cpSetTile(activeX, activeY, cpGetTile(activeX, activeY).Tile, cpGetTile(activeX, activeY).Dir, activeMeta);
+	  update();
 	}
       }
     </script>
@@ -454,10 +474,10 @@
 		<div align="left" style="padding-left: 1em;"><a class="chooseButton" href="#chooseBlock">Block w&auml;hlen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button" onclick="setActiveTile()">Setzen</a></div>
+		<div align="center"><a class="button" onclick="setActiveTile(true, blockChosen);">Setzen</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
-		<div align="center"><a class="button">Richtung</a></div>
+		<div align="center"><a class="button" onclick="rotateActiveTile();">Richtung</a></div>
 	      </td>
 	      <td class="editorMenuBarTableTd">
 		<div align="center"><a class="button">Aussehen</a></div>

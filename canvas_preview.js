@@ -157,12 +157,15 @@ function cpRender()
  * @param {Object} X X coordinate of operation
  * @param {Object} Y Y coordinate of operation
  * @param {Object} TID TileID to set tile to
- * @param [Object} Dir Direction to set tile to
+ * @param {Object} Dir Direction to set tile to
+ * @param {Object} Meta Meta to set tile to
  */
-function cpSetTile(X, Y, TID, Dir) 
+function cpSetTile(X, Y, TID, Dir, Meta) 
 {
+	_cpMap[Y][X].TID=TID;
 	_cpMap[Y][X].Tile=TID;
 	_cpMap[Y][X].Dir=Dir;
+	_cpMap[Y][X].Meta=Meta;
 	if(_cpcAutoUPD == true)
 	    cpRender();
 }
