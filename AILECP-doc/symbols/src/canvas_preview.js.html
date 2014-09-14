@@ -164,50 +164,55 @@
 <span class='line'>157</span>  * @param {Object} X X coordinate of operation
 <span class='line'>158</span>  * @param {Object} Y Y coordinate of operation
 <span class='line'>159</span>  * @param {Object} TID TileID to set tile to
-<span class='line'>160</span>  */</span><span class="WHIT">
-<span class='line'>161</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpSetTile</span><span class="PUNC">(</span><span class="NAME">X</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">TID</span><span class="PUNC">)</span><span class="WHIT"> 
-<span class='line'>162</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>163</span> </span><span class="WHIT">	</span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">=</span><span class="NAME">TID</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>164</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">_cpcAutoUPD</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>165</span> </span><span class="WHIT">	    </span><span class="NAME">cpRender</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>166</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>167</span> 
-<span class='line'>168</span> </span><span class="COMM">/**
-<span class='line'>169</span>  * Return tile at [X,Y]
-<span class='line'>170</span>  * @author Rahix
-<span class='line'>171</span>  * @param {Object} X X coordinate of tile to return
-<span class='line'>172</span>  * @param {Object} Y Y coordinate of tile to return
-<span class='line'>173</span>  * @return {Object} tileID of tile at [X,Y]
-<span class='line'>174</span>  */</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetTile</span><span class="PUNC">(</span><span class="NAME">X</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Y</span><span class="PUNC">)</span><span class="WHIT"> 
-<span class='line'>176</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>177</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>178</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>179</span> 
-<span class='line'>180</span> </span><span class="COMM">/**
-<span class='line'>181</span>  * Return JSON coded map data.&lt;br />
-<span class='line'>182</span>  * This is the finished result you can use as map
-<span class='line'>183</span>  * @author Rahix
-<span class='line'>184</span>  * @return {Object} The JSON coded map data
-<span class='line'>185</span>  */</span><span class="WHIT">
-<span class='line'>186</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetMapJSON</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> 
-<span class='line'>187</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>188</span> </span><span class="WHIT">	</span><span class="COMM">// This one will be uploaded to the database</span><span class="WHIT">
-<span class='line'>189</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">_cpMapData</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>190</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>191</span> 
-<span class='line'>192</span> </span><span class="COMM">/**
-<span class='line'>193</span>  * Return the X size of the tiles.&lt;br />
-<span class='line'>194</span>  * This function should be called whenever the tile that has been clicked should be found out.&lt;br />
-<span class='line'>195</span>  * &lt;b>ATTENTION:&lt;/b> This value WILL change if the window is resized!
-<span class='line'>196</span>  */</span><span class="WHIT">
-<span class='line'>197</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetTileDimension</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>198</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">try1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">try2</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>201</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tiledim</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>202</span> </span><span class="WHIT">         
-<span class='line'>203</span>     </span><span class="NAME">tiledim</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">try1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_cpCanvasObj.height</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">_cpMapData.General.Size.Y</span><span class="PUNC">)</span><span class="PUNC">></span><span class="PUNC">(</span><span class="NAME">try2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_cpCanvasObj.width</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">_cpMapData.General.Size.X</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="PUNC">(</span><span class="NAME">try2</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="PUNC">(</span><span class="NAME">try1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>204</span> </span><span class="WHIT">      
-<span class='line'>205</span>     </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">tiledim</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>206</span> </span><span class="PUNC">}</span></pre></body></html>
+<span class='line'>160</span>  * @param {Object} Dir Direction to set tile to
+<span class='line'>161</span>  * @param {Object} Meta Meta to set tile to
+<span class='line'>162</span>  */</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpSetTile</span><span class="PUNC">(</span><span class="NAME">X</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">TID</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Dir</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Meta</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>164</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">	</span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">TID</span><span class="PUNC">=</span><span class="NAME">TID</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">	</span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">Tile</span><span class="PUNC">=</span><span class="NAME">TID</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">	</span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">Dir</span><span class="PUNC">=</span><span class="NAME">Dir</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">	</span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">Meta</span><span class="PUNC">=</span><span class="NAME">Meta</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">_cpcAutoUPD</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">	    </span><span class="NAME">cpRender</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>172</span> 
+<span class='line'>173</span> </span><span class="COMM">/**
+<span class='line'>174</span>  * Return tile at [X,Y]
+<span class='line'>175</span>  * @author Rahix
+<span class='line'>176</span>  * @param {Object} X X coordinate of tile to return
+<span class='line'>177</span>  * @param {Object} Y Y coordinate of tile to return
+<span class='line'>178</span>  * @return {Object} tileID of tile at [X,Y]
+<span class='line'>179</span>  */</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetTile</span><span class="PUNC">(</span><span class="NAME">X</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Y</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>181</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_cpMap</span><span class="PUNC">[</span><span class="NAME">Y</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">X</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> </span><span class="COMM">/**
+<span class='line'>186</span>  * Return JSON coded map data.&lt;br />
+<span class='line'>187</span>  * This is the finished result you can use as map
+<span class='line'>188</span>  * @author Rahix
+<span class='line'>189</span>  * @return {Object} The JSON coded map data
+<span class='line'>190</span>  */</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetMapJSON</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>192</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">	</span><span class="COMM">// This one will be uploaded to the database</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">_cpMapData</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>196</span> 
+<span class='line'>197</span> </span><span class="COMM">/**
+<span class='line'>198</span>  * Return the X size of the tiles.&lt;br />
+<span class='line'>199</span>  * This function should be called whenever the tile that has been clicked should be found out.&lt;br />
+<span class='line'>200</span>  * &lt;b>ATTENTION:&lt;/b> This value WILL change if the window is resized!
+<span class='line'>201</span>  */</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cpGetTileDimension</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">try1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">try2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tiledim</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">        
+<span class='line'>208</span> 	</span><span class="NAME">tiledim</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">try1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_cpCanvasObj.height</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">_cpMapData.General.Size.Y</span><span class="PUNC">)</span><span class="PUNC">></span><span class="PUNC">(</span><span class="NAME">try2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_cpCanvasObj.width</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">_cpMapData.General.Size.X</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="PUNC">(</span><span class="NAME">try2</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="PUNC">(</span><span class="NAME">try1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">	
+<span class='line'>210</span> 	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">tiledim</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="PUNC">}</span></pre></body></html>
