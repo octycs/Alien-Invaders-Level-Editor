@@ -32,12 +32,12 @@ function _cpdDrawMap(xOff, yOff)
 			}
 			else if(_cpMap[t][i].Tile == 17) //Start
 			{
-				_cpdDrawWayArrow(tiledim,i,t);
+				_cpdDrawWayArrow(tiledim,i,t,xOff,yOff);
 				_cpCCTX.drawImage(document.getElementById(_cpcImgStartTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 			}
 			else if(_cpMap[t][i].Tile == 16)//End
 			{
-				_cpdDrawWayArrow(tiledim,i,t);
+				_cpdDrawWayArrow(tiledim,i,t,xOff,yOff);
 				_cpCCTX.drawImage(document.getElementById(_cpcImgEndTileID), (i * tiledim) + xOff, (t * tiledim) + yOff, tiledim, tiledim);
 			}
 			else if(_cpMap[t][i].Tile == 15)//Way
